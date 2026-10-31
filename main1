@@ -1,0 +1,42 @@
+//Макарова Дарья Леонидовна ПИ 1-1 "Возврат нескольких результатов"
+
+#include <stdio.h>
+
+int min_max(const int a[], int n, int *lo, int *hi){
+    if (n <= 0) return 0;
+
+int curmin = a[0];
+int curmax = a[0];
+
+for (int i = 1; i < n; i++) {
+    if (a[i] < curmin){
+        curmin = a[i];
+    }
+    if (a[i] > curmax){
+        curmax = a[i];
+    }
+}
+    *lo = curmin;
+    *hi = curmax;
+    return 1;
+}
+
+
+int main(void) {
+    int array[] = {4, -2, 7};
+    int lo, hi;
+    lo = 99; hi = 99;
+    int res1 = min_max(array, 3, &lo, &hi);
+    printf("%s; lo=%d; hi=%d\n", res1 ? "Успех" : "Отказ", lo, hi);
+    
+    int res2 = min_max(array, 1, &lo, &hi);
+    printf("%s; lo=%d; hi=%d\n", res2 ? "Успех" : "Отказ", lo, hi);
+    
+    lo = 99;
+    hi = 99;
+    int res3 = min_max(array, 0, &lo, &hi);
+    printf("%s; lo=%d; hi=%d\n", res3 ? "Успех" : "Отказ", lo, hi);
+    
+	return 0;
+
+}
